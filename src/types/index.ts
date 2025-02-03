@@ -1,3 +1,13 @@
+export interface FileExplorerProps {
+  data: ProjectProps;
+}
+
+export interface TreeNodeProps {
+  item: ProjectProps | FolderProps | FileProps;
+  level: number;
+  onRemove: (id: string) => void;
+}
+
 export interface ProjectProps {
   id: string;
   type: string;

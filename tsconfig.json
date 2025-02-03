@@ -1,16 +1,9 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
     "allowJs": true,
     "moduleResolution": "node",
-    "checkJs": false,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "composite": true,
-    "types": ["node"]
+    "esModuleInterop": true
   },
-  "include": ["src"],
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
