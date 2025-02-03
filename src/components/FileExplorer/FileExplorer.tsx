@@ -27,28 +27,11 @@ const FileExplorer = () => {
 
     const handleRemove = async (id: string) => {
         try {
-            // First call the API to delete the item
-            await api.deleteById(id);
+            // Call the API to delete the item and get the updated tree
+            const updatedTree = await api.deleteById(id);
             
-            // Then update the local state using the same recursive logic
-            const removeItem = (items: ProjectProps): ProjectProps | null => {
-                if (_.isEqual(items.id, id)) return null;
-                if (!_.isEmpty(items.children)) {
-                    const newChildren = _.chain(items.children)
-                        .map(child => removeItem(child))
-                        .compact()
-                        .value();
-                    return { ...items, children: newChildren };
-                }
-                return items;
-            };
-            
-            if (data) {
-                const updatedTree = removeItem(_.cloneDeep(data));
-                if (!_.isNull(updatedTree)) {
-                    setData(updatedTree);
-                }
-            }
+            // Update the local state with the new tree from the API
+            setData(updatedTree as ProjectProps);
         } catch (err) {
             console.error('Failed to delete item:', err);
         }

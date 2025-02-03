@@ -26,7 +26,7 @@ const TreeNode = ({ item, level, onRemove }: TreeNodeProps) => {
   };
 
   return (
-    <div className="tree-node" style={{ '--level-margin': `${level * 10}px` } as React.CSSProperties}>
+    <div className="tree-node" data-testid="tree-node" style={{ '--level-margin': `${level * 10}px` } as React.CSSProperties}>
       <div 
         className={`tree-node-content ${item.type === 'project' ? 'project' : ''}`}
         onClick={hasChildren ? toggleExpand : undefined}

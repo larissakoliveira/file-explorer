@@ -1,50 +1,87 @@
-# React + TypeScript + Vite
+# File Explorer Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based file explorer application built with TypeScript and Vite. This project allows users to browse and interact with a file system structure.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (Latest LTS version recommended)
+- npm or yarn package manager
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd file-explorer
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
 ```
+
+## Development
+
+To run the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The application will be available at `http://localhost:5173` (or another port if 5173 is in use).
+
+## Building for Production
+
+To create a production build:
+```bash
+npm run build
+# or
+yarn build
+```
+
+To preview the production build:
+```bash
+npm run preview
+# or
+yarn preview
+```
+
+## Testing
+
+This project uses Cypress for end-to-end testing. To run the tests:
+
+- Open Cypress Test Runner:
+```bash
+npm run cypress:open
+# or
+yarn cypress:open
+```
+
+- Run tests in headless mode:
+```bash
+npm run cypress:run
+# or
+yarn cypress:run
+```
+
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- Cypress for testing
+- ESLint for code linting
+- Lodash for utility functions
+
+## Project Structure
+
+- `/src` - Source code
+  - `/api` - API layer
+  - `/assets` - Static files
+  - `/components` - Reusable UI components
+  - `/types` - Type definitions
+  - `/utils` - Utility functions
+- `/cypress` - End-to-end tests
