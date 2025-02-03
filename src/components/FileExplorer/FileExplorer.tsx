@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { useState, useEffect } from 'react';
 import TreeNode from '../TreeNode/TreeNode';
 import { ProjectProps } from '../../types';
