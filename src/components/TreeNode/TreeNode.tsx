@@ -4,6 +4,7 @@ import getFileIcon from '../../utils/fileIcons';
 import arrowDown from '../../assets/arrowDown.svg';
 import arrowRight from '../../assets/arrowRight.svg';
 import closeButton from '../../assets/x.svg';
+import Button from '../Button/Button';
 
 const TreeNode = ({ item, level, onRemove }: TreeNodeProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -26,50 +27,32 @@ const TreeNode = ({ item, level, onRemove }: TreeNodeProps) => {
 
   return (
     <div className="tree-node" style={{ '--level-margin': `${level * 10}px` } as React.CSSProperties}>
-      {item.type === 'project' ? (
-      <div className="tree-node-content project" onClick={hasChildren ? toggleExpand : undefined}>
+      <div 
+        className={`tree-node-content ${item.type === 'project' ? 'project' : ''}`}
+        onClick={hasChildren ? toggleExpand : undefined}
+      >
         {hasChildren && (
           <div className="arrow-icon">
             <img src={isExpanded ? arrowDown : arrowRight} alt="arrow" />
           </div>
         )}
-        <img src={getIcon()}></img>
-        {item.type === 'project' ? (
-          <span className="name project">{item.name.toUpperCase()}</span>
-          ) : (
-        <span className="name nodes">{item.name}</span>
-          )}
+        <img src={getIcon()} alt="" />
+        <span className={`name ${item.type === 'project' ? 'project' : 'nodes'}`}>
+          {item.type === 'project' ? item.name.toUpperCase() : item.name}
+        </span>
         {item.type !== 'project' && (
-        <button 
-          className="remove-button" 
-          onClick={handleRemove}
-          title="Remove item"
-        >
-          <img src={closeButton}/>
-        </button>
-)}
-      </div>
-      ) : (
-        <div className="tree-node-content" onClick={hasChildren ? toggleExpand : undefined}>
-          {hasChildren && (
-            <div className="arrow-icon">
-              <img src={isExpanded ? arrowDown : arrowRight} alt="arrow" />
-            </div>
-          )}
-          <img src={getIcon()}></img>
-          <span className="name">{item.name}</span>
-          <button 
-            className="remove-button" 
-            onClick={handleRemove}
+          <Button
+            className="remove-button"
+            onRemove={handleRemove}
             title="Remove item"
-          >
-            <img src={closeButton}></img>
-          </button>
-        </div>
-      )}
+            ariaLabel={`Remove ${item.name}`}
+            buttonIcon={closeButton}
+          />
+        )}
+      </div>
       {hasChildren && isExpanded && (
         <div className="tree-node-children">
-          {(item as | FolderProps).children?.map((child) => (
+          {(item as FolderProps).children?.map((child) => (
             <TreeNode
               key={child.id}
               item={child}

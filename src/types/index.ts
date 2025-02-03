@@ -1,5 +1,8 @@
-export interface FileExplorerProps {
-  data: ProjectProps;
+export interface TreeNode {
+  id: string;
+  type: "project" | "folder" | "file";
+  name: string;
+  children?: TreeNode[];
 }
 
 export interface TreeNodeProps {

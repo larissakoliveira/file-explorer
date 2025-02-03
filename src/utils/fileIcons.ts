@@ -28,8 +28,6 @@ const getFileIcon = (fileName: string): string => {
         return htmlFileIcon;
       case 'css':
         return cssFileIcon;
-      
-      // JavaScript/TypeScript
       case 'js':
         return jsFileIcon;
       
