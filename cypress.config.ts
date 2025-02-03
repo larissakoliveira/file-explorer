@@ -10,11 +10,4 @@ module.exports = defineConfig({
       return config;
     },
   },
-
-  component: {
-    devServer: {
-      framework: "react",
-      bundler: "vite",
-    },
-  },
 });

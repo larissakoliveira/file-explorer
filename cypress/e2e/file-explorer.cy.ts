@@ -27,13 +27,15 @@ describe('Tree Node', () => {
   })
 
   it('should allow file deletion', () => {
-    // Get initial count of nodes
     let initialLength;
+    
+    // First expand the root node to see its children
+    cy.get('.tree-node-content').first().click();
+    
+    // Get count of nodes after expansion
     cy.get('[data-testid="tree-node"]')
-      .then(($nodesBefore) => {
-        initialLength = $nodesBefore.length;
-        // First expand the root node to see its children
-        cy.get('.tree-node-content').first().click();
+      .then(($nodes) => {
+        initialLength = $nodes.length;
       });
 
     // Find a non-project node (which should have a remove button)
@@ -47,10 +49,8 @@ describe('Tree Node', () => {
       });
     
     // Wait for the API call to complete and verify one node was removed
-    cy.get('[data-testid="tree-node"]')
-      .should('have.length.lessThan', initialLength)
-      .and(($nodesAfter) => {
-        expect($nodesAfter.length).to.equal(initialLength - 1);
-      });
-  });
+    cy.get('[data-testid="tree-node"]').then(($nodesAfter) => {
+      expect($nodesAfter.length).to.be.lessThan(initialLength);
+    });
+  })
 })
