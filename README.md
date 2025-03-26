@@ -2,6 +2,16 @@
 
 A React-based file explorer application built with TypeScript and Vite. This project allows users to browse and interact with a file system structure.
 
+## Technologies Used
+
+- React - JavaScript library for building user interfaces.
+- Vite - A fast build tool and development server for modern web projects.
+- TypeScript - A superset of JavaScript that provides static typing.
+- Electron - Framework for building cross-platform desktop applications with web technologies.
+- Cypress - A testing framework for end-to-end testing.
+- ESLint - A tool for identifying and fixing problems in JavaScript and TypeScript code.
+- Lodash - A utility library for JavaScript.
+
 ## Prerequisites
 
 - Node.js (Latest LTS version recommended)
